@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="min-h-screen flex flex-col items-center font-sans">
+
+    <img src="/static/img/user.png" class="w-28 h-28 rounded-full border-4 border-[#42A5F5] shadow mt-6">
+
+    <form method="POST" action="/perfil/update" class="flex flex-wrap justify-center gap-3 mt-6">
+
+        <input name="cidade" value="{{ user.cidade }}" placeholder="Cidade"
+               class="px-4 py-2 rounded-full border" />
+
+        <input name="profissao" value="{{ user.profissao }}" placeholder="Profissão"
+               class="px-4 py-2 rounded-full border" />
+
+        <input name="moradia" value="{{ user.moradia }}" placeholder="Moradia"
+               class="px-4 py-2 rounded-full border" />
+
+        <input name="pets" value="{{ user.numero_pets }}" placeholder="Número de pets"
+               class="px-4 py-2 rounded-full border" />
+
+    </form>
+
+    <div class="mt-10 flex gap-16">
+
+        <div class="flex flex-col gap-4">
+            <label class="bg-[#FFB300] px-4 py-2 rounded-full font-semibold">Nome Completo: {{ user.nome }}</label>
+            <label class="bg-[#FFB300] px-4 py-2 rounded-full font-semibold">Telefone: {{ user.telefone }}</label>
+            <label class="bg-[#FFB300] px-4 py-2 rounded-full font-semibold">Email: {{ user.email }}</label>
+            <label class="bg-[#FFB300] px-4 py-2 rounded-full font-semibold">Minha Conta: {{ user.id }}</label>
+        </div>
+
+        <div class="bg-[#42A5F5] rounded-xl p-6 shadow-md">
+            <p class="text-center font-semibold text-white mb-4">Meus pets:</p>
+
+            <div class="grid grid-cols-3 gap-4">
+
+                {% for pet in pets %}
+                    <div class="bg-gray-300 rounded-lg w-24 h-24 flex items-center justify-center">
+                        <img src="{{ pet.foto }}" alt="pet" class="w-full h-full rounded-lg object-cover">
+                    </div>
+                {% endfor %}
+
+                {% if pets|length < 6 %}
+                    <div class="bg-gray-200 border-2 border-dashed rounded-lg w-24 h-24 flex items-center justify-center">
+                        <span class="text-xs text-gray-600">Adicionar</span>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
