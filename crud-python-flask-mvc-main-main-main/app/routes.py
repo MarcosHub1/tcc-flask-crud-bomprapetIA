@@ -29,6 +29,9 @@ def register():
         nome = request.form['nome']
         email = request.form['email']
         senha = request.form['senha']
+        estado = request.form['estado']
+        telefone = request.form['telefone']
+        cidade = request.form['cidade']
 
         # Verifica se já existe usuário com esse email
         existing_user = User.query.filter_by(email=email).first()
@@ -37,7 +40,7 @@ def register():
             return redirect(url_for('register'))
 
         hashed_password = generate_password_hash(senha, method='sha256')
-        new_user = User(nome=nome, email=email, senha=hashed_password)
+        new_user = User(nome=nome, email=email, senha=hashed_password,estado=estado, telefone=telefone,cidade=cidade)
 
         db.session.add(new_user)
         db.session.commit()

@@ -1,7 +1,7 @@
 from app import app, db
-from openai import OpenAI
+#from openai import OpenAI
 
-client = OpenAI(api_key="SUA_CHAVE_AQUI")  # <-- você vai colocar sua chave aqui
+#client = OpenAI(api_key="SUA_CHAVE_AQUI")  # <-- você vai colocar sua chave aqui
 
 
 if __name__ == '__main__':
